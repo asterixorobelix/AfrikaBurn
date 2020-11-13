@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="asterixorobelix.afrikaburn.ui.search.filters.FiltersFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/medium_dimen"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/filter_type_title" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/project_type_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/vehicle_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vehicles"
+                    app:chipBackgroundColor="@color/vehicle_color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/camp_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/camps"
+                    app:chipBackgroundColor="@color/camp_color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/event_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/events"
+                    app:chipBackgroundColor="@color/event_color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/artwork_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artwork"
+                    app:chipBackgroundColor="@color/art_color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/all_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/filter_other_title" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/other_filters_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/burn_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/burn" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/favourite_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/favourite" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/collective_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/collective" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/music_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/music" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/no_music_chip"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="@dimen/chip_size"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_music" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </ScrollView>
+</layout>

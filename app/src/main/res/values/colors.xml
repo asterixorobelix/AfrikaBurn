@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="art_color">#ba68c8</color>
+    <color name="vehicle_color">#7986cb</color>
+    <color name="camp_color">#4fc3f7</color>
+    <color name="event_color">#4db6ac</color>
+</resources>

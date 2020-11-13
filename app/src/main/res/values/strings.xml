@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Afrikaburn</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="menu_search">Search</string>
+    <string name="search_title">View projects</string>
+    <string name="projects">Projects</string>
+    <string name="collective">Collective</string>
+
+    <string name="filters">Filters</string>
+    <string name="filter_type_title">Filter by project type</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="camps">Camps</string>
+    <string name="events">Events</string>
+    <string name="artwork">Artworks</string>
+    <string name="all">All</string>
+    <string name="filter_other_title">Other filters</string>
+    <string name="burn">Burns</string>
+    <string name="favourite">Favourite</string>
+    <string name="music">Music</string>
+    <string name="no_music">No music</string>
+
+    <string name="map">Project Location</string>
+    <string name="mapbox_api_key">sk.eyJ1IjoiYXN0ZXJpeG9yb2JlbGl4IiwiYSI6ImNqeDdnazF3NDA5Y2ozdnBuMmd2cDMwYTkifQ.Nq6Z_kp7jnUo6xnEstRM3Q</string>
+    <string name="offline_map_target_latitude">-32.3272851</string>
+    <string name="offline_map_target_longitude">19.7476507</string>
+</resources>
