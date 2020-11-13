@@ -8,6 +8,11 @@ class SearchPagingSource(
 ) : PagingSource<Int, Project>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Project> {
         val startingIndex = params.key ?: 0
-        return LoadResult.Page(data = searchRepository.getProjects(startingIndex, startingIndex+1), prevKey = null,nextKey = startingIndex+1)
+        return LoadResult.Page(
+            data = searchRepository.getProjects(
+                startingIndex,
+                startingIndex + 1
+            ), prevKey = null, nextKey = startingIndex + 1
+        )
     }
 }
