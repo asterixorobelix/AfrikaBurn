@@ -8,4 +8,6 @@
     <color name="vehicle_color">#7986cb</color>
     <color name="camp_color">#4fc3f7</color>
     <color name="event_color">#4db6ac</color>
+
+    <color name="icon_color">#000000</color>
 </resources>
