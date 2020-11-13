@@ -23,7 +23,7 @@ import org.koin.android.ext.android.inject
 
 class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectViewModel>() {
     //todo clicking map icon opens navigate me there page
-    //todo websites, burn scheduled time, sound level, project image
+    //todo burn scheduled time, sound level, project image
     private var mapMarkerCircleManager: CircleManager? = null
 
     override val layout: Int = R.layout.project_fragment
@@ -131,7 +131,7 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
 
             toggleShimmer(this)
 
-            if(project.getWebsites().isNotEmpty()){
+            if (project.getWebsites().isNotEmpty()) {
                 projectItemsRecycler.adapter = ProjectWebsitesAdapter(project.getWebsites().filter {
                     !it.isNullOrEmpty()
                 })
