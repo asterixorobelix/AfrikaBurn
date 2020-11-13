@@ -4,7 +4,7 @@
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="asterixorobelix.afrikaburn.ui.project.ProjectFragment">
@@ -14,7 +14,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_view_container"
+                android:layout_width="match_parent"
+                tools:visibility="gone"
+                app:shimmer_clip_to_children="true"
+                app:shimmer_colored="true"
+                app:shimmer_highlight_color="@color/colorAccent"
+                android:layout_height="match_parent"
+                app:shimmer_auto_start="true">
+
+                <include
+                    layout="@layout/layout_search_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="100dp" />
+
+                <include
+                    layout="@layout/layout_search_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="50dp" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/project_info_body_layout"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/medium_dimen">
@@ -63,18 +91,22 @@
                     app:layout_constraintTop_toBottomOf="@id/collective_text">
 
                     <ImageView
+                        tools:src="@drawable/ic_art"
                         android:id="@+id/project_type_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
                     <ImageView
+                        tools:src="@drawable/ic_speaker"
                         android:id="@+id/sound_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
                     <ImageView
+                        tools:visibility="visible"
+                        tools:src="@drawable/ic_fire"
                         android:id="@+id/burn_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -83,11 +115,22 @@
                 </LinearLayout>
 
                 <TextView
+                    tools:text="Loads and loads and loads of text"
                     android:id="@+id/body_textview"
                     style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/categories_layout" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/project_items_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/body_textview"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:listitem="@layout/layout_search_item" />
 
                 <TextView
                     android:id="@+id/map_title"
@@ -96,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/small_dimen"
                     android:text="@string/map"
-                    app:layout_constraintTop_toBottomOf="@id/body_textview" />
+                    app:layout_constraintTop_toBottomOf="@id/project_items_recycler" />
 
                 <com.mapbox.mapboxsdk.maps.MapView
                     android:id="@+id/map_view"
@@ -109,5 +152,5 @@
                     mapbox:mapbox_cameraZoom="15" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -10,6 +10,7 @@ import asterixorobelix.utilities.base.BaseViewModelFragment
 import asterixorobelix.utilities.fromHTMLString
 import asterixorobelix.utilities.ui.loadImageFromIDSetVisibility
 import asterixorobelix.utilities.ui.obtainStringFromResourceId
+import asterixorobelix.utilities.ui.setVisibleOrGone
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -100,6 +101,13 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
         toolbarTitle = ""
     }
 
+    private fun toggleShimmer(binding: ProjectFragmentBinding) {
+        binding.apply {
+            projectInfoBodyLayout.setVisibleOrGone(visible = true)
+            shimmerViewContainer.setVisibleOrGone(visible = false)
+        }
+    }
+
     private fun setProjectToBinding(project: Project) {
         binding?.apply {
             projectTitle.text = project.title
@@ -120,6 +128,15 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
             }
 
             bodyTextview.text = project.longDescription?.fromHTMLString()
+
+            toggleShimmer(this)
+
+            if(project.getWebsites().isNotEmpty()){
+                projectItemsRecycler.adapter = ProjectWebsitesAdapter(project.getWebsites().filter {
+                    !it.isNullOrEmpty()
+                })
+            }
+
         }
     }
 

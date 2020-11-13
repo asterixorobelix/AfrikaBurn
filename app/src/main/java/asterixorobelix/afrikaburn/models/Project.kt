@@ -72,7 +72,7 @@ class Project {
 
     fun getWebsites(): List<String> {
         website?.let {
-            return it.replace("""\""", "").split(",")
+            return it.replace("""\""", "").split(", ")
         }
         return emptyList()
     }

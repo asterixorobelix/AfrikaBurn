@@ -12,7 +12,7 @@
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"
             android:layout_width="match_parent"
-            app:shimmer_clip_to_children="false"
+            app:shimmer_clip_to_children="true"
             app:shimmer_colored="true"
             app:shimmer_highlight_color="@color/colorAccent"
             android:layout_height="match_parent"
