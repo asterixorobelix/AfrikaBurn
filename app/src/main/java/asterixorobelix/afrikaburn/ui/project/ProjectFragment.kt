@@ -23,7 +23,7 @@ import org.koin.android.ext.android.inject
 
 class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectViewModel>() {
     //todo clicking map icon opens navigate me there page
-    //todo burn scheduled time, project image
+    //todo burn scheduled time, project image, mark project as favourite
     private var mapMarkerCircleManager: CircleManager? = null
 
     override val layout: Int = R.layout.project_fragment
@@ -123,7 +123,7 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
             projectTypeImage.loadImageFromIDSetVisibility(project.getType().getIcon())
             soundImage.loadImageFromIDSetVisibility(getSoundImage(project.hasSound()))
 
-            if (project.hasSound()){
+            if (project.hasSound()) {
                 level.text = project.getSoundLevel().name
                 soundLevelLayout.setVisibleOrGone(project.hasSound())
             }

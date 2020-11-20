@@ -13,7 +13,7 @@ interface ProjectDao {
     suspend fun getAll(): List<DatabaseProject>
 
     @Query("SELECT * FROM databaseproject WHERE id IN (:projectId)")
-    suspend fun loadAllById(projectId: Int): DatabaseProject
+    suspend fun findProjectById(projectId: Int): DatabaseProject?
 
     @Query("SELECT * FROM databaseproject WHERE project_type IN (:projectType)")
     suspend fun findByProjectsType(projectType: String): List<DatabaseProject>
