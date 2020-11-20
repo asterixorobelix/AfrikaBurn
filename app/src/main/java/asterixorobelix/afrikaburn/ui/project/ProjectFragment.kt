@@ -27,8 +27,8 @@ import com.mapbox.mapboxsdk.utils.ColorUtils
 import org.koin.android.ext.android.inject
 
 class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectViewModel>() {
-    //todo clicking map icon opens navigate me there page
-    //todo burn scheduled time, project image, mark project as favourite
+    //todo clicking map icon opens navigate me there page?
+    //todo burn scheduled time, mark project as favourite
     private var mapMarkerCircleManager: CircleManager? = null
 
     override val layout: Int = R.layout.project_fragment
@@ -45,13 +45,10 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
 
     override fun loadFragment() {
         hideToolbar()
-//        val host = activity?.findNavController(R.id.nav_host_fragment) ?: return
-//        val mainToolbar: Toolbar = view?.findViewById(R.id.project_toolbar) ?: return
-//        val navView: NavigationView = view?.findViewById(R.id.nav_view) ?: return
-//        mainToolbar.apply {
-//            navView.setupWithNavController(host)
-//        }
         binding?.apply {
+            projectToolbar.setNavigationOnClickListener {
+                activity?.onBackPressed()
+            }
             mapView.getMapAsync { mapboxMap ->
                 mapboxMap.setStyle(Style.DARK) {
                 }
@@ -110,7 +107,11 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
     }
 
     override fun setTitleAndRecycler() {
-        toolbarTitle = ""
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showToolbar()
     }
 
     private fun toggleShimmer(binding: ProjectFragmentBinding) {
@@ -158,11 +159,6 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
             }
 
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        showToolbar()
     }
 
     companion object {
