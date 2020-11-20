@@ -123,10 +123,11 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
     private fun setProjectToBinding(project: Project) {
         binding?.apply {
             projectTitle.text = project.title
-            projectFavouriteIcon.loadImageFromIDSetVisibility(determineFavouriteImage(project.isFavourite))
-            projectFavouriteIcon.setOnClickListener {
+            projectFavouriteFab.loadImageFromIDSetVisibility(determineFavouriteImage(project.isFavourite))
+
+            projectFavouriteFab.setOnClickListener {
                 project.isFavourite = !project.isFavourite
-                projectFavouriteIcon.loadImageFromIDSetVisibility(determineFavouriteImage(project.isFavourite))
+                projectFavouriteFab.loadImageFromIDSetVisibility(determineFavouriteImage(project.isFavourite))
             }
 
             collectiveText.text =
