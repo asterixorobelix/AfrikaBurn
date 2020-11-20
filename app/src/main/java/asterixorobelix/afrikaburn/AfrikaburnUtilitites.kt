@@ -1,5 +1,6 @@
 package asterixorobelix.afrikaburn
 
+import androidx.fragment.app.Fragment
 import asterixorobelix.afrikaburn.models.Project
 
 fun Project.ProjectType.getIcon(): Int {
@@ -34,4 +35,12 @@ fun determineFavouriteImage(isFavourite: Boolean): Int {
         true -> R.drawable.ic_favourite
         else -> R.drawable.ic_not_favourite
     }
+}
+
+fun Fragment.hideToolbar(){
+    (activity as MainActivity).toggleToolbarVisibility(false)
+}
+
+fun Fragment.showToolbar(){
+    (activity as MainActivity).toggleToolbarVisibility(true)
 }

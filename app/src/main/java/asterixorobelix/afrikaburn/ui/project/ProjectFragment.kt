@@ -1,7 +1,10 @@
 package asterixorobelix.afrikaburn.ui.project
 
 import android.content.Context
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import asterixorobelix.afrikaburn.*
 import asterixorobelix.afrikaburn.databinding.ProjectFragmentBinding
 import asterixorobelix.afrikaburn.models.Project
@@ -9,8 +12,10 @@ import asterixorobelix.afrikaburn.models.ProjectNavigationArguments
 import asterixorobelix.utilities.base.BaseViewModelFragment
 import asterixorobelix.utilities.fromHTMLString
 import asterixorobelix.utilities.ui.loadImageFromIDSetVisibility
+import asterixorobelix.utilities.ui.loadImageFromURLSetVisibility
 import asterixorobelix.utilities.ui.obtainStringFromResourceId
 import asterixorobelix.utilities.ui.setVisibleOrGone
+import com.google.android.material.navigation.NavigationView
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
@@ -39,6 +44,13 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
     }
 
     override fun loadFragment() {
+        hideToolbar()
+//        val host = activity?.findNavController(R.id.nav_host_fragment) ?: return
+//        val mainToolbar: Toolbar = view?.findViewById(R.id.project_toolbar) ?: return
+//        val navView: NavigationView = view?.findViewById(R.id.nav_view) ?: return
+//        mainToolbar.apply {
+//            navView.setupWithNavController(host)
+//        }
         binding?.apply {
             mapView.getMapAsync { mapboxMap ->
                 mapboxMap.setStyle(Style.DARK) {
@@ -123,6 +135,8 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
             projectTypeImage.loadImageFromIDSetVisibility(project.getType().getIcon())
             soundImage.loadImageFromIDSetVisibility(getSoundImage(project.hasSound()))
 
+            detailImage.loadImageFromURLSetVisibility(project.getImageUrl())
+
             if (project.hasSound()) {
                 level.text = project.getSoundLevel().name
                 soundLevelLayout.setVisibleOrGone(project.hasSound())
@@ -143,6 +157,11 @@ class ProjectFragment : BaseViewModelFragment<ProjectFragmentBinding, ProjectVie
             }
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        showToolbar()
     }
 
     companion object {

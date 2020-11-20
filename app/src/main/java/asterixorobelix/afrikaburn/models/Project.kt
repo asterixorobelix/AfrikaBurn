@@ -55,13 +55,13 @@ class Project {
     var fieldPrjWtfScheduled: String? = ""
 
     @SerializedName("field_prj_wtf_image")
-    private var fieldPrjWtfImage: String? = ""
+    private var fieldPrjWtfImage: String? = null
 
-    fun getImageUrl(): String? {
+    fun getImageUrl(): String {
         fieldPrjWtfImage?.let {
             return AFRIKABURN_IMAGE_PREFIX + it.replace("""\""", "")
         }
-        return null
+        return ""
     }
 
     @SerializedName("field_prj_gen_history")

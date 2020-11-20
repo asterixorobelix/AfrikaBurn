@@ -36,4 +36,7 @@
     <string name="mapbox_api_key">sk.eyJ1IjoiYXN0ZXJpeG9yb2JlbGl4IiwiYSI6ImNqeDdnazF3NDA5Y2ozdnBuMmd2cDMwYTkifQ.Nq6Z_kp7jnUo6xnEstRM3Q</string>
     <string name="offline_map_target_latitude">-32.3272851</string>
     <string name="offline_map_target_longitude">19.7476507</string>
+
+    <string name="navigate_up">Navigate up</string>
+    <string name="project_detail_header_aspect" translatable="false">H,16:9</string>
 </resources>
