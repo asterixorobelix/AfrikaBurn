@@ -26,7 +26,7 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
         binding?.apply {
             recyclerView?.adapter = searchAdapter
             viewModel.numberOfProjects.observe(viewLifecycleOwner, Observer {
-                projectsCount.text =
+                toolbarTitle =
                     "$it ${obtainStringFromResourceId(R.string.projects)}"
                 toggleShimmer(this)
             })
@@ -43,13 +43,11 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
     }
 
     override fun setTitleAndRecycler() {
-        toolbarTitle = obtainStringFromResourceId(R.string.search_title)
         recyclerView = binding?.searchItemsRecycler
     }
 
     private fun toggleShimmer(binding: FragmentSearchBinding) {
         binding.apply {
-            countCardView.setVisibleOrGone(visible = true)
             searchItemsRecycler.setVisibleOrGone(visible = true)
             shimmerViewContainer.setVisibleOrGone(visible = false)
         }

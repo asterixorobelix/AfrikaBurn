@@ -105,16 +105,16 @@ class Project {
 
     enum class SoundLevel {
         None,
-        Level1NormalCarStereoWithoutSubWoofers,
-        Level2LoudAmplifiedSound,
-        Level3LargeClubOrStadiumSizeSound
+        CarStereoWithoutSubWoofers,
+        LoudAmplifiedSound,
+        LargeClubOrStadiumSizeSound
     }
 
     fun getSoundLevel(): SoundLevel {
         return when (prjSndLevel) {
-            "Level 1 - Normal car stereo without sub woofers" -> SoundLevel.Level1NormalCarStereoWithoutSubWoofers
-            "Level 2 - Loud amplified sound" -> SoundLevel.Level2LoudAmplifiedSound
-            "Level 3 - Large club or stadium size sound" -> SoundLevel.Level3LargeClubOrStadiumSizeSound
+            "Level 1 - Normal car stereo without sub woofers" -> SoundLevel.CarStereoWithoutSubWoofers
+            "Level 2 - Loud amplified sound" -> SoundLevel.LoudAmplifiedSound
+            "Level 3 - Large club or stadium size sound" -> SoundLevel.LargeClubOrStadiumSizeSound
             else -> SoundLevel.None
         }
     }

@@ -28,8 +28,10 @@
     <string name="music">Music</string>
     <string name="no_music">No music</string>
 
+    <string name="sound_level">Sound Level:</string>
+
     <string name="map">Project Location</string>
-    <string name="visit_website">Visit website</string>
+    <string name="visit_website">Visit project website</string>
 
     <string name="mapbox_api_key">sk.eyJ1IjoiYXN0ZXJpeG9yb2JlbGl4IiwiYSI6ImNqeDdnazF3NDA5Y2ozdnBuMmd2cDMwYTkifQ.Nq6Z_kp7jnUo6xnEstRM3Q</string>
     <string name="offline_map_target_latitude">-32.3272851</string>

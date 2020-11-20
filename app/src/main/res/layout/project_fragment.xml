@@ -17,12 +17,12 @@
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/shimmer_view_container"
                 android:layout_width="match_parent"
-                tools:visibility="gone"
+                android:layout_height="match_parent"
+                app:shimmer_auto_start="true"
                 app:shimmer_clip_to_children="true"
                 app:shimmer_colored="true"
                 app:shimmer_highlight_color="@color/colorAccent"
-                android:layout_height="match_parent"
-                app:shimmer_auto_start="true">
+                tools:visibility="gone">
 
                 <include
                     layout="@layout/layout_search_item"
@@ -41,11 +41,11 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/project_info_body_layout"
-                android:visibility="gone"
-                tools:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/medium_dimen">
+                android:layout_margin="@dimen/medium_dimen"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:id="@+id/title_favourite_layout"
@@ -91,45 +91,75 @@
                     app:layout_constraintTop_toBottomOf="@id/collective_text">
 
                     <ImageView
-                        tools:src="@drawable/ic_art"
                         android:id="@+id/project_type_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        tools:src="@drawable/ic_art" />
 
                     <ImageView
-                        tools:src="@drawable/ic_speaker"
                         android:id="@+id/sound_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        tools:src="@drawable/ic_speaker" />
 
                     <ImageView
-                        tools:visibility="visible"
-                        tools:src="@drawable/ic_fire"
                         android:id="@+id/burn_image"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:src="@drawable/ic_fire"
+                        tools:visibility="visible" />
                 </LinearLayout>
 
                 <TextView
-                    tools:text="Loads and loads and loads of text"
                     android:id="@+id/body_textview"
                     style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/categories_layout" />
+                    app:layout_constraintTop_toBottomOf="@id/categories_layout"
+                    tools:text="Loads and loads and loads of text" />
+
+                <LinearLayout
+                    android:id="@+id/sound_level_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toTopOf="@id/project_items_recycler"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_textview"
+                    tools:visibility="visible">
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:text="@string/sound_level" />
+
+                    <TextView
+                        android:id="@+id/level"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        tools:text="Stadium sound" />
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/project_items_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:overScrollMode="never"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/body_textview"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sound_level_layout"
                     tools:listitem="@layout/layout_search_item" />
 
                 <TextView
