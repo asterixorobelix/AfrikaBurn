@@ -5,10 +5,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import asterixorobelix.afrikaburn.R
 import asterixorobelix.afrikaburn.databinding.FragmentSearchBinding
+import asterixorobelix.afrikaburn.models.Project
 import asterixorobelix.afrikaburn.ui.search.filters.FiltersViewModel
 import asterixorobelix.utilities.base.BaseViewModelFragment
 import asterixorobelix.utilities.ui.obtainStringFromResourceId
 import asterixorobelix.utilities.ui.setVisibleOrGone
+import com.google.android.material.chip.Chip
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -36,7 +38,14 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
             }
         }
 
-        viewModel.updateProjectCount(filtersViewModel.getProjectFilterType())
+        if(filtersViewModel.getProjectFilterType() != Project.ProjectType.Unknown){
+            viewModel.updateProjectCount(filtersViewModel.getProjectFilterType())
+            binding?.filterChipsScroll?.setVisibleOrGone(true)
+            binding?.filtersChips?.addView(Chip(context).apply {
+                text = filtersViewModel.getProjectFilterType().name
+                isClickable = false
+            })
+        }
 
         lifecycleScope.launch {
             viewModel.searchProjects.collectLatest {
