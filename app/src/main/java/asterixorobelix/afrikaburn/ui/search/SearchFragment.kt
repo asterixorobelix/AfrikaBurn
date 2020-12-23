@@ -35,12 +35,14 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
                 toggleShimmer(this)
             })
             fab.setOnClickListener {
+                viewModel.searchProjects = null
                 findNavController().navigate(R.id.filtersFragment)
             }
         }
 
         val filterProjectType = filtersViewModel.getProjectFilterType()
-        viewModel.updateProjectCount(filterProjectType)
+        if(viewModel.searchProjects == null)
+            viewModel.updateProjectCount(filterProjectType)
 
         binding?.apply {
             filterChipsScroll.setVisibleOrGone(filterProjectType != Project.ProjectType.Unknown)
@@ -52,7 +54,7 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
         }
 
         lifecycleScope.launch {
-            viewModel.searchProjects.collectLatest {
+            viewModel.searchProjects?.collectLatest {
                 searchAdapter.submitData(it)
             }
         }

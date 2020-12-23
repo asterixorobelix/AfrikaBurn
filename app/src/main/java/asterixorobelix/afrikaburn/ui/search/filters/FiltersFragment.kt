@@ -6,7 +6,6 @@ import asterixorobelix.afrikaburn.databinding.FiltersFragmentBinding
 import asterixorobelix.afrikaburn.models.Project
 import asterixorobelix.utilities.base.BaseViewModelFragment
 import asterixorobelix.utilities.ui.obtainStringFromResourceId
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class FiltersFragment : BaseViewModelFragment<FiltersFragmentBinding, FiltersViewModel>() {
@@ -26,19 +25,22 @@ class FiltersFragment : BaseViewModelFragment<FiltersFragmentBinding, FiltersVie
         }
 
         viewModel.apply {
-
+            setChipToChecked(getProjectFilterType())
         }
-    }
-
-    override fun onDestroy() {
-        binding?.run {
-
-        }
-        super.onDestroy()
     }
 
     override fun setTitleAndRecycler() {
         toolbarTitle = obtainStringFromResourceId(R.string.filters)
+    }
+
+    private fun setChipToChecked(projectType: Project.ProjectType) {
+        when (projectType) {
+            Project.ProjectType.Artwork -> binding?.artworkChip?.isChecked = true
+            Project.ProjectType.Event -> binding?.eventChip?.isChecked = true
+            Project.ProjectType.Vehicle -> binding?.vehicleChip?.isChecked = true
+            Project.ProjectType.Camp -> binding?.campChip?.isChecked = true
+            else -> null
+        }
     }
 
     private fun getFilters(projectTypeFilters: List<Int>, otherFilters: List<Int>) {

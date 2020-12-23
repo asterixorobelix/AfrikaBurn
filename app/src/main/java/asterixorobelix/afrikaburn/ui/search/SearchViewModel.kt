@@ -46,5 +46,5 @@ class SearchViewModel(private val searchRepository: SearchRepository) :
         }
     }
 
-    lateinit var searchProjects: Flow<PagingData<Project>>
+    var searchProjects: Flow<PagingData<Project>>? = null
 }

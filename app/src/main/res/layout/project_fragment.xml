@@ -45,7 +45,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- Toolbar needs to be on top for the back button to be tappable -->
-                <androidx.appcompat.widget.Toolbar
+                <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/project_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
