@@ -8,6 +8,12 @@ class SearchRepository(private val afrikaburnRepository: AfrikaburnRepository) {
         return afrikaburnRepository.getProjectsRaw().toList()
     }
 
+    suspend fun getProjectsByType(projectType: Project.ProjectType): List<Project> {
+        return afrikaburnRepository.getProjectsRaw().toList().filter {
+            it.getType() == projectType
+        }
+    }
+
     suspend fun getProjects(startIndex: Int, endIndex:Int): List<Project> {
         return getProjects().subList(startIndex,endIndex)
     }

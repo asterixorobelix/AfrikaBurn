@@ -5,22 +5,23 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import asterixorobelix.afrikaburn.R
 import asterixorobelix.afrikaburn.databinding.FragmentSearchBinding
+import asterixorobelix.afrikaburn.ui.search.filters.FiltersViewModel
 import asterixorobelix.utilities.base.BaseViewModelFragment
 import asterixorobelix.utilities.ui.obtainStringFromResourceId
 import asterixorobelix.utilities.ui.setVisibleOrGone
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewModel>() {
-
-    private val searchViewModel: SearchViewModel by inject()
 
     override val layout: Int = R.layout.fragment_search
     override val optionsMenuId: Int? = null
     override val viewModel: SearchViewModel by inject()
 
     private val searchAdapter = SearchItemAdapter(ProjectComparator())
+    private val filtersViewModel: FiltersViewModel by sharedViewModel()
 
     override fun loadFragment() {
         binding?.apply {
@@ -35,8 +36,10 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
             }
         }
 
+        viewModel.updateProjectCount(filtersViewModel.getProjectFilterType())
+
         lifecycleScope.launch {
-            searchViewModel.searchProjects.collectLatest {
+            viewModel.searchProjects.collectLatest {
                 searchAdapter.submitData(it)
             }
         }

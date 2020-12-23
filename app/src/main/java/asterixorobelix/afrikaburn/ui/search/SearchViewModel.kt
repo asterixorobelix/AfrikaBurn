@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
+import asterixorobelix.afrikaburn.models.Project
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val searchRepository: SearchRepository) :
@@ -17,6 +18,14 @@ class SearchViewModel(private val searchRepository: SearchRepository) :
     init {
         viewModelScope.launch {
             projectCount.postValue(searchRepository.getProjects().count())
+        }
+    }
+
+    fun updateProjectCount(projectType: Project.ProjectType) {
+        viewModelScope.launch {
+            if (projectType != Project.ProjectType.Unknown) {
+                projectCount.postValue(searchRepository.getProjectsByType(projectType).count())
+            }
         }
     }
 
