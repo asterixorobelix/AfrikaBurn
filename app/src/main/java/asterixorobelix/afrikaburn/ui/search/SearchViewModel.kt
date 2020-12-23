@@ -19,13 +19,7 @@ class SearchViewModel(private val searchRepository: SearchRepository) :
 
     init {
         viewModelScope.launch {
-            projectCount.postValue(searchRepository.getProjects().count())
-            searchProjects = Pager(
-                PagingConfig(pageSize = 20)
-            ) {
-                SearchPagingSource(searchRepository)
-            }.flow
-                .cachedIn(viewModelScope)
+
         }
     }
 
@@ -37,6 +31,15 @@ class SearchViewModel(private val searchRepository: SearchRepository) :
                     PagingConfig(pageSize = 20)
                 ) {
                     SearchFilteredPagingSource(searchRepository, projectType)
+                }.flow
+                    .cachedIn(viewModelScope)
+            }
+            else{
+                projectCount.postValue(searchRepository.getProjects().count())
+                searchProjects = Pager(
+                    PagingConfig(pageSize = 20)
+                ) {
+                    SearchPagingSource(searchRepository)
                 }.flow
                     .cachedIn(viewModelScope)
             }

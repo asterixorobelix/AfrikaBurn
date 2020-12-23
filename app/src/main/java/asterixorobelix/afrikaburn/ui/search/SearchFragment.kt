@@ -5,6 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import asterixorobelix.afrikaburn.R
 import asterixorobelix.afrikaburn.databinding.FragmentSearchBinding
+import asterixorobelix.afrikaburn.getColor
 import asterixorobelix.afrikaburn.models.Project
 import asterixorobelix.afrikaburn.ui.search.filters.FiltersViewModel
 import asterixorobelix.utilities.base.BaseViewModelFragment
@@ -38,12 +39,15 @@ class SearchFragment : BaseViewModelFragment<FragmentSearchBinding, SearchViewMo
             }
         }
 
-        if(filtersViewModel.getProjectFilterType() != Project.ProjectType.Unknown){
-            viewModel.updateProjectCount(filtersViewModel.getProjectFilterType())
-            binding?.filterChipsScroll?.setVisibleOrGone(true)
-            binding?.filtersChips?.addView(Chip(context).apply {
+        val filterProjectType = filtersViewModel.getProjectFilterType()
+        viewModel.updateProjectCount(filterProjectType)
+
+        binding?.apply {
+            filterChipsScroll.setVisibleOrGone(filterProjectType != Project.ProjectType.Unknown)
+            filtersChips.addView(Chip(context).apply {
                 text = filtersViewModel.getProjectFilterType().name
                 isClickable = false
+                setChipBackgroundColorResource(filterProjectType.getColor())
             })
         }
 
